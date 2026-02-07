@@ -1,0 +1,35 @@
+{
+    "manifest_version": 3,
+    "name": "LeetCode AI Helper",
+    "version": "1.0",
+    "description": "AI-powered assistant for LeetCode",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "storage",
+        "sidePanel"
+    ],
+    "host_permissions": [
+        "*://leetcode.com/*",
+        "http://localhost:3000/*"
+    ],
+    "action": {
+        "default_title": "Open LeetCode AI Helper"
+    },
+    "side_panel": {
+        "default_path": "popup.html"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://leetcode.com/problems/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ]
+}

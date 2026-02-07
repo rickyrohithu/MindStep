@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode AI Helper</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <h1>LeetCode AI Helper</h1>
+        
+        <div class="buttons">
+            <button id="btn-explain">Explain Problem</button>
+            <button id="btn-syntax">Check Syntax</button>
+            <button id="btn-logic">Check Logic</button>
+            <button id="btn-hint">Get Hint</button>
+            <button id="btn-pattern">Identify Pattern</button>
+        </div>
+
+        <div id="output" class="hidden">
+            <div class="question-section">
+                <h3>Question:</h3>
+                <p id="question-text"></p>
+            </div>
+            <div class="answer-section">
+                <h3>Answer:</h3>
+                <div id="answer-content"></div>
+            </div>
+            <button id="btn-close" class="close-btn">&times;</button>
+        </div>
+
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
