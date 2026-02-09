@@ -1,69 +1,47 @@
-# LeetCode AI Helper - Chrome Extension
+# LeetCode AI Helper - Chrome Extension 🚀
 
-A full-stack Chrome Extension that acts as an AI pair programmer for LeetCode, focusing on educational value without giving away solutions.
+A premium full-stack assistant for LeetCode. Get hints, explanations, and logic checks without spoilers, delivered via a sleek embedded UI.
+
+## ✨ Features
+- **Embedded Modal UI**: Results appear directly on your LeetCode screen in a beautiful, draggable window.
+- **BYOK (Bring Your Own Key)**: Use your own OpenRouter API key for privacy and unlimited usage.
+- **Explain Problem**: Conceptual breakdowns without code.
+- **Logic & Syntax Check**: Find bugs in your code without being given the answer.
+- **Dark Mode**: Designed to match the LeetCode dark theme perfectly.
 
 ## 📂 Project Structure
-
 ```
 LeetCode_AI_Helper_System/
-├── backend/                  # Node.js + Express Backend
-│   ├── .env                  # Environment keys (OpenAI)
-│   ├── package.json          # Dependencies
-│   └── server.js             # API Logic & Prompts
-├── extension/                # Chrome Extension
-│   ├── manifest.json         # Extension Config
-│   ├── content.js            # DOM Scraper for LeetCode
-│   ├── popup.html            # Extension UI
-│   ├── popup.css             # UI Styling
-│   └── popup.js              # Logic & API Communication
-└── README.md                 # Setup Instructions
+├── backend/                  # Node.js + Express Backend (Host on Vercel)
+│   ├── server.js             # API Logic & Prompts
+│   └── vercel.json           # Hosting Config
+└── extension/                # Chrome Extension
+    ├── manifest.json         # Extension Config
+    ├── content.js            # Injected Modal & Scraper
+    ├── modal.css             # Embedded UI Styling
+    ├── popup.html            # Control Panel UI
+    └── popup.js              # Settings & Communication
 ```
 
-## 🚀 Setup Instructions
+## 🚀 Setup & Hosting
 
-### 1. Backend Setup
-1.  Open a terminal and navigate to the `backend` folder:
-    ```bash
-    cd backend
-    ```
-2.  Install dependencies:
-    ```bash
-    npm install
-    ```
-3.  Configure your OpenAI API Key:
-    - Open the `.env` file in the `backend` folder.
-    - Replace `your_openai_api_key_here` with your actual OpenAI API Key.
-    ```
-    OPENAI_API_KEY=sk-proj-...
-    PORT=3000
-    ```
-4.  Start the server:
-    ```bash
-    npm start
-    ```
-    You should see: `Server running on port 3000`.
+### 1. Host the Backend (Vercel)
+1. Go to [Vercel](https://vercel.com/) and Import this project.
+2. Set **Root Directory** to `backend`.
+3. Add `OPENROUTER_API_KEY` (Optional fallback) in Environment Variables.
+4. Deploy and copy your brand new **Production URL**.
 
-### 2. Chrome Extension Setup
-1.  Open Chrome and navigate to `chrome://extensions/`.
-2.  Toggle **Developer mode** (top right corner).
-3.  Click **Load unpacked**.
-4.  Select the `extension` folder from this project (`LeetCode_AI_Helper_System/extension`).
-5.  The extension "LeetCode AI Helper" should appear in your list.
+### 2. Configure Extension
+1. Open `extension/popup.js`.
+2. Update `const BASE_URL = 'http://localhost:3000';` with your Vercel URL.
 
-### 3. Usage
-1.  Go to any LeetCode problem page (e.g., [Two Sum](https://leetcode.com/problems/two-sum/)).
-2.  Refresh the page if you just installed the extension.
-3.  Click the extension icon in the toolbar.
-4.  Click any button:
-    - **Explain Problem**: Get a simple conceptual explanation.
-    - **Syntax Check**: Analyzes code currently in the Monaco editor.
-    - **Logic Check**: Finds logical errors in your approach.
-    - **Get Hint**: Provides a gentle nudge.
-    - **Identify Pattern**: Links you to the pattern guide.
-    
-    *Note: Ensure you have selected a language and typed some code for Syntax/Logic checks.*
+### 3. Install Extension
+1. Open Chrome and navigate to `chrome://extensions/`.
+2. Enable **Developer mode**.
+3. Click **Load unpacked** and select the `extension` folder.
+4. Click the extension icon, go to **Settings (⚙️)**, and paste your [OpenRouter API Key](https://openrouter.ai/).
 
-## 🔒 Security & Privacy
-- Your OpenAI API Key is stored securely on your local backend (`.env`).
-- The extension communicates only with `localhost:3000`.
-- No code is auto-submitted to LeetCode.
+## 🔒 Security
+- Your API key is stored **locally** in your browser's `chrome.storage`.
+- Requests are sent securely to your hosted backend.
+- No solutions are ever auto-submitted.
